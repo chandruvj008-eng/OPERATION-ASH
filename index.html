@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101827" />
+  <title>FoundIt — Lost & Found</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="FoundIt home">
+      <span class="brand-mark">⌕</span>
+      <span>FoundIt</span>
+    </a>
+    <nav class="nav">
+      <a href="#browse">Browse items</a>
+      <a href="#how-it-works">How it works</a>
+      <button class="btn btn-outline" id="signInBtn">Sign in</button>
+      <button class="btn btn-primary" id="reportTopBtn">＋ Report an item</button>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="pulse"></span> A smarter way to reunite belongings</div>
+        <h1>Lost for a moment.<br /><span>Found through community.</span></h1>
+        <p class="hero-copy">Report a lost item, share something you've found, and discover possible matches in one simple place.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-large" id="lostHeroBtn">I lost something <span>↗</span></button>
+          <button class="btn btn-light btn-large" id="foundHeroBtn">I found something</button>
+          <button class="btn btn-outline btn-large" id="enableAlertsBtn" type="button">Enable match alerts</button>
+        </div>
+        <div class="trust-row">
+          <div class="avatar-stack"><span>J</span><span>A</span><span>M</span><span>+</span></div>
+          <div><strong>Community-powered</strong><small>Helping good things find their way home</small></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Illustration of finding a lost item">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="floating-tag tag-top"><span class="tag-icon">✓</span><span><b>Possible match</b><small>Water bottle · 92%</small></span></div>
+        <div class="phone-card">
+          <div class="phone-top"><span></span><span></span><span></span></div>
+          <div class="scan-ring"><div class="scan-symbol">⌕</div><div class="scan-dot"></div></div>
+          <div class="phone-caption">Searching nearby reports…</div>
+          <div class="mini-result"><div class="mini-thumb blue">▰</div><div><b>Blue backpack</b><small>Library · Today</small></div><span class="match-pill">Match</span></div>
+          <div class="mini-result"><div class="mini-thumb yellow">◉</div><div><b>Wireless earbuds</b><small>Campus · Yesterday</small></div><span class="match-pill">Match</span></div>
+        </div>
+        <div class="floating-tag tag-bottom"><span class="location-icon">⌖</span><span><b>Search by location</b><small>Campus, office, public places</small></span></div>
+      </div>
+    </section>
+
+    <section class="search-section" id="browse">
+      <div class="search-heading">
+        <div><p class="section-kicker">COMMUNITY BOARD</p><h2>Find what you're looking for</h2></div>
+        <span class="demo-label">DEMO DATA</span>
+      </div>
+      <div class="search-bar">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Search item, place, or keyword…" aria-label="Search items" />
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="all">All categories</option>
+          <option value="electronics">Electronics</option>
+          <option value="phones">Mobile phones</option>
+          <option value="chargers">Chargers</option>
+          <option value="gold_chains">Gold chains</option>
+          <option value="rings">Rings</option>
+          <option value="id_cards">ID cards</option>
+          <option value="water_bottles">Water bottles</option>
+          <option value="bags">Bags & accessories</option>
+          <option value="documents">Documents</option>
+          <option value="other">Other</option>
+        </select>
+        <button class="btn btn-dark" id="searchBtn">Search</button>
+      </div>
+      <div class="board-toolbar">
+        <div class="filter-tabs" role="group" aria-label="Item type">
+          <button class="filter-tab active" data-type="all">All items <span id="allCount">6</span></button>
+          <button class="filter-tab" data-type="lost">Lost <span id="lostCount">3</span></button>
+          <button class="filter-tab" data-type="found">Found <span id="foundCount">3</span></button>
+        </div>
+        <span class="results-count" id="resultsCount">Showing 6 items</span>
+      </div>
+      <div class="item-grid" id="itemGrid" aria-live="polite"></div>
+      <div class="empty-state hidden" id="emptyState"><div class="empty-icon">⌕</div><h3>No matching items yet</h3><p>Try another keyword or report the item so the community can help.</p><button class="btn btn-primary" id="emptyReportBtn">Report an item</button></div>
+      <div class="center-action"><button class="btn btn-outline" id="showAllBtn">View all demo items <span>→</span></button></div>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+      <div class="section-center"><p class="section-kicker">SIMPLE BY DESIGN</p><h2>From lost to found in 3 steps</h2><p>Clear reports. Useful matches. Safer reunions.</p></div>
+      <div class="steps">
+        <article class="step-card step-action" data-step-action="report" tabindex="0" role="button" aria-label="Post a report: open the report form"><div class="step-number">01</div><div class="step-icon lilac">＋</div><h3>Post a report</h3><p>Add the item name, where it was lost or found, and a photo if available.</p></article>
+        <article class="step-card step-action" data-step-action="browse" tabindex="0" role="button" aria-label="Discover matches: browse reports"><div class="step-number">02</div><div class="step-icon mint">⌕</div><h3>Discover matches</h3><p>Compare possible matches using item names, descriptions, and categories.</p></article>
+        <article class="step-card step-action" data-step-action="safety" tabindex="0" role="button" aria-label="Reconnect safely: view safe handoff tips"><div class="step-number">03</div><div class="step-icon peach">↗</div><h3>Reconnect safely</h3><p>Review a few tips before arranging an item handoff.</p></article>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div><p class="section-kicker">BE PART OF THE SOLUTION</p><h2>Someone nearby may have seen it.</h2><p>One clear report can make all the difference.</p></div>
+      <button class="btn btn-light btn-large" id="ctaReportBtn">Create a report <span>↗</span></button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand" href="#"><span class="brand-mark">⌕</span><span>FoundIt</span></a>
+    <p>Prototype concept · Frontend only · Demo items are fictional</p>
+    <div class="footer-links"><a href="#how-it-works">How it works</a><a href="#" id="privacyBtn">Privacy</a></div>
+  </footer>
+
+  <div class="modal-backdrop hidden" id="reportModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <div class="modal-badge">COMMUNITY REPORT</div>
+      <h2 id="modalTitle">Report an item</h2>
+      <p class="modal-intro">Fill in the details below. Reports are saved by the local server and remain available after refresh.</p>
+      <form id="reportForm">
+        <div class="type-switch"><label><input type="radio" name="reportType" value="lost" checked /><span>I lost it</span></label><label><input type="radio" name="reportType" value="found" /><span>I found it</span></label></div>
+        <label class="field-label" for="itemName">Item name <span>*</span></label>
+        <input class="form-control" id="itemName" required maxlength="70" placeholder="e.g. Black water bottle" />
+        <div class="form-row">
+          <div><label class="field-label" for="itemCategory">Category</label><select class="form-control" id="itemCategory"><option value="electronics">Electronics</option><option value="phones">Mobile phones</option><option value="chargers">Chargers</option><option value="gold_chains">Gold chains</option><option value="rings">Rings</option><option value="id_cards">ID cards</option><option value="water_bottles">Water bottles</option><option value="bags">Bags & accessories</option><option value="documents">Documents</option><option value="other">Other</option></select></div>
+          <div><label class="field-label" for="itemDate">Date</label><input class="form-control" id="itemDate" type="date" /></div>
+        </div>
+        <label class="field-label" for="itemLocation">Location <span>*</span></label>
+        <input class="form-control" id="itemLocation" required maxlength="100" placeholder="e.g. College library, 1st floor" />
+        <div id="handoffLocationGroup" class="hidden">
+          <label class="field-label" for="itemHandoffLocation">Where can the owner collect it? (optional)</label>
+          <input class="form-control" id="itemHandoffLocation" maxlength="100" placeholder="e.g. campus security desk or library reception" />
+          <p class="photo-help">Choose a public meeting place. Don’t post a private home address.</p>
+        </div>
+        <label class="field-label" for="itemDescription">Description</label>
+        <textarea class="form-control" id="itemDescription" rows="3" maxlength="300" placeholder="Colour, brand, identifying details (avoid sharing sensitive information)"></textarea>
+        <label class="field-label" for="itemPhoto">Item photo (optional)</label>
+        <input class="form-control photo-input" id="itemPhoto" type="file" accept="image/*" capture="environment" />
+        <div class="photo-preview hidden" id="photoPreviewWrap"><img id="photoPreview" alt="Selected item preview" /><button class="photo-remove" id="removePhoto" type="button">Remove photo</button></div>
+        <p class="photo-help">Choose a photo or take one with your camera. Images stay in this browser demo.</p>
+        <div id="lostPhoneGroup">
+          <label class="field-label" for="itemRegisteredPhone">Your registered phone number <span>*</span></label>
+          <input class="form-control" id="itemRegisteredPhone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="Used privately to confirm a return" />
+        </div>
+        <div id="recipientPhoneGroup" class="hidden">
+          <label class="field-label" for="itemRecipientPhone">Recipient's registered phone number <span>*</span></label>
+          <input class="form-control" id="itemRecipientPhone" type="tel" inputmode="tel" maxlength="20" placeholder="Enter the number of the person who received it" />
+        </div>
+        <label class="field-label" for="itemContact">Contact info (optional in this demo)</label>
+        <input class="form-control" id="itemContact" maxlength="100" placeholder="Optional phone number or email (stored privately on this computer)" />
+        <div class="form-note"><span>ⓘ</span> Contact details and registered numbers are stored by the local Node server in items.json. They are not shown on public item cards. Keep that file private.</div>
+        <button class="btn btn-primary btn-full" type="submit">Create report <span>→</span></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+  <script src="step-actions.js"></script>
+</body>
+</html>
